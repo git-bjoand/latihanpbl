@@ -1,0 +1,23 @@
+name: automasi testing
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+  steps:
+    -name: Checkout Repository
+    uses: actions/checkout@v4
+
+    -name: install HTMLHint & Stylelint
+    run: npm intall -g htmlhint stylelint
+
+    -name: periksa html
+    run: htmlhint "**/*.html"
+
+    -name: periksa html
+    run: stylelint "**/*.css"
