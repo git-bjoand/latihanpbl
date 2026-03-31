@@ -1,0 +1,21 @@
+name: cek kode html (windows)
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+
+jobs:
+  lint:
+  runs-on: windows-latest
+
+  steps:
+    -name: Checkout Repository
+    uses: actions/checkout@v4
+
+    -name: install HTMLHint
+    run: npm install -g html
+
+    -name: periksa html
+    run: htmlhint "**/*.html"
